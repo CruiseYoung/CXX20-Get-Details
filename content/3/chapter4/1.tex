@@ -1573,7 +1573,7 @@ requires (parameter-list(optional)) {requirement-seq}
 需求序列:由简单需求、类型需求、复合需求或嵌套需求组成
 \end{itemize}
 
-当需要编译时谓词时，需求表达式也可以用作独立功能。阅读(需求表达式)中有关此功能的详细信息。
+当需要编译时谓词时，需求表达式也可以用作独立功能。阅读(Require 表达式)中有关此功能的详细信息。
 
 \hspace*{\fill} \\ %插入空行
 \noindent
@@ -1771,10 +1771,10 @@ int main() {
 
 	std::cout << '\n';
 	
-	First first;
+	Fir first;
 	static_assert(requires(Fir fir){ { fir.count() } -> std::convertible_to<int>; });
 	
-	Second second;
+	Sec second;
 	static_assert(requires(Sec sec){ { sec.count() } -> std::convertible_to<int>; });
 	
 	int third;
@@ -1804,6 +1804,7 @@ constexpr if在C++17中允许有条件地编译源代码。条件部分中，req
 
 \begin{lstlisting}[style=styleCXX]
 // constexprIfRequires.cpp
+
 #include <concepts>
 #include <iostream>
 
@@ -1849,7 +1850,7 @@ int main() {
 }
 \end{lstlisting}
 
-这个示例中，第21和22行非常重要。第21行中，require表达式确定变量t是否有成员函数count，该函数返回int。因此，第22行确定变量t是否具有成员函数size。
+这个示例中，第21和24行非常重要。第21行中，require表达式确定变量t是否有成员函数count，该函数返回int。因此，第24行确定变量t是否具有成员函数size。
 
 \begin{tcblisting}{commandshell={}}
 getNumberOfElements(first): 2020

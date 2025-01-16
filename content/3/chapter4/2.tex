@@ -429,8 +429,8 @@ Microsoft的编译器
 \noindent
 \textbf{使用Microsoft编译器构建可执行文件}
 \begin{tcblisting}{commandshell={}}
-cl.exe /experimental:module /c math.ixx
-cl.exe /experimental:module client.cpp math.obj
+cl.exe /std:c++latest /c math.ixx
+cl.exe /std:c++latest client.cpp math.obj
 \end{tcblisting}
 
 \begin{itemize}
@@ -472,11 +472,9 @@ export int add(int fir, int sec){
 \noindent
 \textbf{使用Clang编译器构建可执行文件}
 \begin{tcblisting}{commandshell={}}
-clang++ -std=c++2a -stdlib=libc++ -c math.cpp -Xclang \ 
-  -emit-module-interface -o math.pcm
+clang++ -std=c++20 -c math.cpp -Xclang -emit-module-interface -o math.pcm
 
-clang++ -std=c++2a -stdlib=libc++ -fprebuilt-module-path=. \ 
-  client.cpp math.pcm -o client
+clang++ -std=c++20 -fprebuilt-module-path=. client.cpp math.pcm -o client.exe
 \end{tcblisting}
 
 \begin{itemize}
